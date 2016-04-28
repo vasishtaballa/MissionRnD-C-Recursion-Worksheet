@@ -23,8 +23,29 @@
 */
 #include "stdafx.h"
 
+void count_no_steps(int s, int *count)
+{
+	if (s == 0)
+	{
+		(*count)++;
+		return;
+	}
+	else
+	{
+		count_no_steps(s - 1, count);
+		if (s - 1 != 0)
+		{
+			count_no_steps(s - 2, count);
+		}
+	}
+}
+
 
 int get_steps(int s)
 {
-	return 0;
+	if (s <= 0)
+		return 0;
+	int count = 0;
+	count_no_steps(s, &count);
+	return count;
 }
